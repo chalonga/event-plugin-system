@@ -13,14 +13,14 @@ A simple plugin event system designed to handle events with plugins dynamically 
 To install the package, use:
 
 ```bash
-pip install event-system
+pip install event-plugin-system
 ```
 
 ## Usage
 
 ```python
 
-from event_system import EventPluginSystem
+from event_plugin_system import EventPluginSystem
 
 # Specify the directory containing your plugins
 plugin_dir = "path/to/your/plugins"
