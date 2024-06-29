@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name="event-system",
-    version="0.1.0",
+    version="0.0.1",
     author="Carlos",
     author_email="chalonga@gmail.com",
     description="A simple plugin event system",
