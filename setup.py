@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="event-system",
-    version="0.0.1",
+    name="event-plugin-system",
+    version="0.0.1a",
     author="Carlos",
     author_email="chalonga@gmail.com",
     description="A simple plugin event system",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/chalonga/event-system",
+    url="https://github.com/chalonga/event-plugin-system",
     packages=find_packages(where="src"),
     package_dir={"": "src"},
     classifiers=[

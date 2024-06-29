@@ -1,6 +1,6 @@
 import sys
 import pytest
-from event_system import EventPluginSystem as EventSystem
+from event_plugin_system import EventPluginSystem as EventSystem
 from copy import copy
 
 EXAMPLE_PLUGINS = "example_plugins"
