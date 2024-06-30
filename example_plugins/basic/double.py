@@ -1,7 +1,8 @@
 class Plugin:
-    def handle_arg_pass2(self, **kwargs):
+    def handle_test_mutation(self, **kwargs):
         arg = kwargs.get('arg', None)
         results = kwargs.get('results', None)
+
         if arg is None or arg == '':
             results_ = ''
         else:

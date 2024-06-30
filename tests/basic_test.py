@@ -21,10 +21,10 @@ def test_arg_pass(basic_events):
 # or a destination URI for the handler to send results to
 # most results should somehow use the plugin_name as the key
 # unless each plugin does a queue.get() or similar 
-def test_arg_pass2(basic_events):
+def test_mutation(basic_events):
     x = "test"
     results = {}
-    basic_events("arg_pass2", arg="test", results=results) 
+    basic_events("test_mutation", arg="test", results=results) 
 
     # check if the double plugin duplicated the arg
     # its important to avoid conflicts, the plugin sets the key below
