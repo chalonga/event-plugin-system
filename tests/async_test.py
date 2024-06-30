@@ -1,30 +1,34 @@
 import sys
 import pytest
-from event_plugin_system import EventPluginSystem as EventSystem
+from event_plugin_system import EventPluginSystemAsync as EventSystem
 from copy import copy
+import pytest
+
 
 EXAMPLE_PLUGINS_ROOT = "example_plugins"
-#sys.path.append("../src")
 
 @pytest.fixture
-def basic_events():
+def async_events():
     # XXX cleanup use Path 
-    return EventSystem(plugin_dir=EXAMPLE_PLUGINS_ROOT + "/basic")
+    return EventSystem(plugin_dir=EXAMPLE_PLUGINS_ROOT + "/basic_async")
 
-def test_init(basic_events):
-    basic_events("start")
+@pytest.mark.asyncio
+async def test_init(async_events):
+    return await async_events("start")
 
-def test_arg_pass(basic_events):
-    basic_events("arg", arg="test") 
+@pytest.mark.asyncio
+async def test_arg_pass(async_events):
+    return await async_events("arg", arg="test") 
 
 # results need to be provided via a mutable, safe object eg queue
 # or a destination URI for the handler to send results to
 # most results should somehow use the plugin_name as the key
 # unless each plugin does a queue.get() or similar 
-def test_arg_pass2(basic_events):
+@pytest.mark.asyncio
+async def test_arg_pass2(async_events):
     x = "test"
     results = {}
-    basic_events("arg_pass2", arg="test", results=results) 
+    await async_events("arg_pass2", arg="test", results=results) 
 
     # check if the double plugin duplicated the arg
     # its important to avoid conflicts, the plugin sets the key below

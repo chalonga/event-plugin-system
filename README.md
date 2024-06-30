@@ -36,7 +36,19 @@ results = {}
 event_system.emit("arg_pass2", arg="test", results=results)
 
 # Check results
+# storage/location for results from event handlers need to provided to the handler
+# Appropriate safe objects should be used for results
+# Consider async queue for async, threadsafe queue when using threads
+# Destination URI's are good choices as well like redis, etc..
+# if threadsafe/simple flow dictionary can be used with plugin_name as the key
 print(results)
+```
+
+### Function Syntax
+`__call__` is aliased to `emit()`. The instance can be used like a function.
+```python
+event_system = EventPluginSystem(plugin_dir=plugin_dir)
+event_system("event", arg1=arg)
 ```
 
 ## Plugin Structure
@@ -58,15 +70,21 @@ class Plugin:
 ### For asynchronous event handling, use EventPluginSystemAsync:
 
 ```python
-from event_system import EventPluginSystemAsync
+import asyncio
+from event_plugin_system import EventPluginSystemAsync
 
-async_event_system = EventPluginSystemAsync(plugin_dir=plugin_dir)
+es = EventPluginSystemAsync(plugin_dir=plugin_dir)
 
-await async_event_system.emit("start")
+async def example():
+    await es.emit("start")
+
+if __name__ == '__main__':
+    asyncio.run(example())
+
 ```
 
 ## Testing
 
 ```
-pytest tests/
+pytest
 ```
