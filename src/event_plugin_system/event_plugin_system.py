@@ -40,7 +40,7 @@ class EventPluginSystem:
                     continue
 
             if self._init_kwargs:
-                plugin_instance = plugin_class(self._init_kwargs)
+                plugin_instance = plugin_class(**self._init_kwargs)
             else:
                 plugin_instance = plugin_class()
             if not getattr(plugin_instance, "plugin_name", None):

@@ -1,5 +1,8 @@
 class Plugin:
 
+    def __init__(self, **kwargs):
+        super().__init__()
+
     def echo(self, msg):
         print(f"From Echo Plugin: {msg}\n")
 
